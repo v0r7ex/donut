@@ -24,7 +24,6 @@ class Program():
         self.gs = self.menu
         
     def display(self):
-        print self.gs
         self.gs.display()
         
     def click(self):

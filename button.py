@@ -16,8 +16,9 @@ class Button():
         return True if mouseX > self.startX and mouseX < self.endX and mouseY > self.startY and mouseY < self.endY else False
     
     def display(self):
-        imageMode(CENTER)
-        if self.is_hovering:
-            image(self.hover_img, self.x, self.y)
-        else:
-            image(self.main_img, self.x, self.y)
+        if self.visible:
+            imageMode(CENTER)
+            if self.is_hovering:
+                image(self.hover_img, self.x, self.y)
+            else:
+                image(self.main_img, self.x, self.y)

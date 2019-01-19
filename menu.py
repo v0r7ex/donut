@@ -20,9 +20,9 @@ class Menu():
         self.play_hover_img.resize(self.play_button.w, self.play_button.h)
         
     def create_buttons(self):
-        self.play_button = Button(50, 40, 24, 10, self.play_img, self.play_hover_img)
-        self.help_button = Button(50, 50, 24, 10, self.play_img, self.play_hover_img)        
-        self.credits_button = Button(50, 60, 24, 10, self.play_img, self.play_hover_img)
+        self.play_button = Button(50, 40, 24, 5, self.play_img, self.play_hover_img)
+        self.help_button = Button(50, 52, 24, 5, self.play_img, self.play_hover_img)        
+        self.credits_button = Button(50, 64, 24, 5, self.play_img, self.play_hover_img)
 
         
     def display(self):

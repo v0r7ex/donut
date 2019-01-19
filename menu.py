@@ -6,16 +6,17 @@ class Menu():
         self.resize_images()
         
     def load_images(self):
-        pass
+        self.bkgd = loadImage("white.jpg")
         
     def resize_images(self):
-        pass
+        self.bkgd.resize(width, height)
         
     def create_buttons(self):
         pass
         
     def display(self):
-        pass
+        imageMode(CORNER)
+        image(self.bkgd, 0, 0)
         
     def click(self):
         pass

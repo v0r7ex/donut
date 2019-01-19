@@ -8,21 +8,38 @@ class Menu():
         
     def load_images(self):
         self.bkgd_img = loadImage("white.jpg")
+        self.title_img = loadImage("title.png")
         self.play_img = loadImage("play.png")
         self.play_hover_img = loadImage("play_hover.png")
         
         
     def resize_images(self):
-        self.bkgd.resize(width, height)
+        self.bkgd_img.resize(width, height)
+        self.title_img.resize(width/2, width/6)
         self.play_img.resize(self.play_button.w, self.play_button.h)
         self.play_hover_img.resize(self.play_button.w, self.play_button.h)
         
     def create_buttons(self):
-        self.play_button = Button(50, 30, 15, 8, self.play_img, self.play_hover_img)
+        self.play_button = Button(50, 40, 24, 10, self.play_img, self.play_hover_img)
+        self.help_button = Button(50, 50, 24, 10, self.play_img, self.play_hover_img)        
+        self.credits_button = Button(50, 60, 24, 10, self.play_img, self.play_hover_img)
+
         
     def display(self):
         imageMode(CORNER)
-        image(self.bkgd, 0, 0)
+        image(self.bkgd_img, 0, 0)
+        imageMode(CENTER)
+        image(self.title_img, width/2, height/6)
+        self.play_button.display()
+        self.help_button.display()
+        self.credits_button.display()
         
     def click(self):
-        pass
+        if self.play_button.is_hovering():
+            return "game"
+        elif self.help_button.is_hovering():
+            return "help"
+        elif self.credits_button.is_hovering():
+            return "credits"
+        else:
+            return None

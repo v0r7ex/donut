@@ -1,6 +1,6 @@
 from button import Button
 
-class Pause():
+class Help():
     def __init__(self):
         self.load_images()
         self.create_buttons()

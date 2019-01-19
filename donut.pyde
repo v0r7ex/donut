@@ -11,3 +11,6 @@ def draw():
     program_instance.display()
 
     
+def mousePressed():
+    global program_instance
+    program_instance.click()

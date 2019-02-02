@@ -1,4 +1,4 @@
-from button import Button
+from simple_button import Simple_Button
 
 class Menu():
     def __init__(self):
@@ -27,9 +27,9 @@ class Menu():
         self.credits_hover_img.resize(self.credits_button.w, self.credits_button.h)
         
     def create_buttons(self):
-        self.play_button = Button(50, 40, 24, 5, self.play_img, self.play_hover_img)
-        self.help_button = Button(50, 52, 24, 5, self.help_img, self.help_hover_img)        
-        self.credits_button = Button(50, 64, 28, 5, self.credits_img, self.credits_hover_img)
+        self.play_button = Simple_Button(50, 40, 24, 5, self.play_img, self.play_hover_img)
+        self.help_button = Simple_Button(50, 52, 24, 5, self.help_img, self.help_hover_img)        
+        self.credits_button = Simple_Button(50, 64, 28, 5, self.credits_img, self.credits_hover_img)
 
     def display(self):
         imageMode(CORNER)

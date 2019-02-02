@@ -1,5 +1,5 @@
-class Button():
-    def __init__(self, xPercent, yPercent, widthPercent, heightPercent, main_img, hover_img, visible = True):
+class Animated_Button():
+    def __init__(self, xPercent, yPercent, widthPercent, heightPercent, frame_dict, hover_frame_num, visible = True):
         self.x = int(xPercent * width/100)
         self.y = int(yPercent * height/100)
         self.w = int(widthPercent * width/100)
@@ -8,8 +8,8 @@ class Button():
         self.startY = self.y - self.h/2
         self.endX = self.x + self.w/2
         self.endY = self.y + self.h/2
-        self.main_img = main_img
-        self.hover_img = hover_img
+        self.frame_dict = frame_dict
+        self.hover_frame = self.frame_dict[hover_frame_num]
         self.visible = visible
         
     def is_hovering(self):

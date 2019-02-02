@@ -1,4 +1,4 @@
-from button import Button
+from simple_button import Simple_Button
 
 class Help():
     def __init__(self):
@@ -19,7 +19,7 @@ class Help():
         self.menu_hover_img.resize(self.menu_button.w, self.menu_button.h)
         
     def create_buttons(self):
-        self.menu_button = Button(50, 50, 28, 5, self.menu_img, self.menu_hover_img)
+        self.menu_button = Simple_Button(50, 50, 28, 5, self.menu_img, self.menu_hover_img)
 
     def display(self):
         imageMode(CORNER)

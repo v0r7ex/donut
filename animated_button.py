@@ -1,5 +1,5 @@
 class Animated_Button():
-    def __init__(self, xPercent, yPercent, widthPercent, heightPercent, frames_array, hover_frame_num, visible = True):
+    def __init__(self, xPercent, yPercent, widthPercent, heightPercent, frames_list, hover_frame_num, visible = True):
         self.x = int(xPercent * width/100)
         self.y = int(yPercent * height/100)
         self.w = int(widthPercent * width/100)
@@ -8,13 +8,24 @@ class Animated_Button():
         self.startY = self.y - self.h/2
         self.endX = self.x + self.w/2
         self.endY = self.y + self.h/2
-        self.frames = frames_array
+        self.frames = frames_list
         self.current_frame = 0
         self.hover_frame = hover_frame_num
         self.visible = visible
+        
+    def reset(self):
+        self.current_frame = 0
         
     def is_hovering(self):
         return True if mouseX > self.startX and mouseX < self.endX and mouseY > self.startY and mouseY < self.endY else False
     
     def display(self):
-        pass
+        if self.is_hovering():
+            pass
+        else:
+            if self.current_frame < (len(self.frames) - 1):
+                self.current_frame += 1
+            else:
+                self.current_frame = 0
+        imageMode(CENTER)        
+        image(self.frames[self.current_frame], self.x, self.y)

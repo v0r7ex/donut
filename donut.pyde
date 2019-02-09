@@ -5,6 +5,7 @@ def setup():
     global program_instance
     program_instance = Program()
     
+    
 def draw():
     global program_instance
     background(50)

@@ -1,6 +1,6 @@
 from simple_button import Simple_Button
 
-class Credits():
+class Settings():
     def __init__(self):
         self.load_images()
         self.create_buttons()
@@ -8,13 +8,13 @@ class Credits():
         
     def load_images(self):
         self.bkgd_img = loadImage("white.jpg")
-        self.credits_img = loadImage("credits.png")
+        self.help_img = loadImage("help.png")
         self.menu_img = loadImage("menu.png")
         self.menu_hover_img = loadImage("menu_hover.png")
         
     def resize_images(self):
         self.bkgd_img.resize(width, height)
-        self.credits_img.resize(width/2, width/13)
+        self.help_img.resize(int(width/2.5), width/13)
         self.menu_img.resize(self.menu_button.w, self.menu_button.h)
         self.menu_hover_img.resize(self.menu_button.w, self.menu_button.h)
         
@@ -25,7 +25,7 @@ class Credits():
         imageMode(CORNER)
         image(self.bkgd_img, 0, 0)
         imageMode(CENTER)
-        image(self.credits_img, width/2, height/6)
+        image(self.help_img, width/2, height/6)
         self.menu_button.display()
         
         

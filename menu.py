@@ -1,4 +1,5 @@
 from simple_button import Simple_Button
+from animated_button import Animated_Button
 
 class Menu():
     def __init__(self):
@@ -9,25 +10,30 @@ class Menu():
     def load_images(self):
         self.bkgd_img = loadImage("white.jpg")
         self.title_img = loadImage("title.png")
-        self.play_img = loadImage("play.png")
-        self.play_hover_img = loadImage("play_hover.png")
+        self.load_play_images()
         self.help_img = loadImage("help.png")
         self.help_hover_img = loadImage("help_hover.png")
         self.credits_img = loadImage("credits.png")
         self.credits_hover_img = loadImage("credits_hover.png")
         
+        
+    def load_play_images(self):
+        self.play_frames = []
+        for i in range(24):
+            self.play_frames.append(loadImage("menu/play_frames/play" + nf(i) + ".png"))
+        
     def resize_images(self):
         self.bkgd_img.resize(width, height)
         self.title_img.resize(width/2, width/6)
-        self.play_img.resize(self.play_button.w, self.play_button.h)
-        self.play_hover_img.resize(self.play_button.w, self.play_button.h)
+        for i in range(24):
+            self.play_frames[i].resize(self.play_button.w, self.play_button.h)
         self.help_img.resize(self.help_button.w, self.help_button.h)
         self.help_hover_img.resize(self.help_button.w, self.help_button.h)
         self.credits_img.resize(self.credits_button.w, self.credits_button.h)
         self.credits_hover_img.resize(self.credits_button.w, self.credits_button.h)
         
     def create_buttons(self):
-        self.play_button = Simple_Button(50, 40, 24, 5, self.play_img, self.play_hover_img)
+        self.play_button = Animated_Button(50, 80, 25, 30, self.play_frames, 11)
         self.help_button = Simple_Button(50, 52, 24, 5, self.help_img, self.help_hover_img)        
         self.credits_button = Simple_Button(50, 64, 28, 5, self.credits_img, self.credits_hover_img)
 

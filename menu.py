@@ -10,7 +10,7 @@ class Menu():
         
     def load_images(self):
         self.bkgd_img = loadImage("white.jpg")
-        self.title_img = loadImage("title.png")
+        self.title_img = loadImage("menu/title.png")
         self.load_play_images()
         self.load_settings_images()
         self.load_about_images()
@@ -32,7 +32,7 @@ class Menu():
         
     def resize_images(self):
         self.bkgd_img.resize(width, height)
-        self.title_img.resize(width/2, width/6)
+        self.title_img.resize(int(68 * width/100), int(17 *height/100))
         for i in range(24):
             self.play_frames[i].resize(self.play_button.w, self.play_button.h)
         for i in range(24):
@@ -53,7 +53,7 @@ class Menu():
         imageMode(CORNER)
         image(self.bkgd_img, 0, 0)
         imageMode(CENTER)
-        #image(self.title_img, width/2, height/6)
+        image(self.title_img, width/2, height/5)
         self.play_button.display()
         self.settings_button.display()
         self.about_button.display()

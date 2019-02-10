@@ -12,20 +12,22 @@ class Animated_Button():
         self.current_frame = 0
         self.hover_frame = hover_frame_num
         self.visible = visible
+        self.state = "wait"
+        self.reset()
         
     def reset(self):
         self.current_frame = 0
+        self.sync_frame = 0
         
     def is_hovering(self):
         return True if mouseX > self.startX and mouseX < self.endX and mouseY > self.startY and mouseY < self.endY else False
     
     def display(self):
-        if self.is_hovering():
-            pass
+        if self.current_frame < (len(self.frames) - 1):
+            self.current_frame += 1
         else:
-            if self.current_frame < (len(self.frames) - 1):
-                self.current_frame += 1
-            else:
-                self.current_frame = 0
-        imageMode(CENTER)        
-        image(self.frames[self.current_frame], self.x, self.y)
+            self.current_frame = 0
+        if self.is_hovering() == False:
+            imageMode(CENTER)        
+            image(self.frames[self.current_frame], self.x, self.y)
+        

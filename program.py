@@ -30,4 +30,4 @@ class Program():
         result = self.gs.click()
         if result is not None:
             self.gs = self.gs_dict[result]
-            sefl.gs.reset()
+            self.gs.reset()

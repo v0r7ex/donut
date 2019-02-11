@@ -1,4 +1,4 @@
-from simple_button import Simple_Button
+from button import Button
 
 class Level_End():
     def __init__(self):

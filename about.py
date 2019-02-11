@@ -1,4 +1,4 @@
-from simple_button import Simple_Button
+from button import Button
 
 class About():
     def __init__(self):
@@ -8,24 +8,27 @@ class About():
         
     def load_images(self):
         self.bkgd_img = loadImage("white.jpg")
-        self.credits_img = loadImage("credits.png")
-        self.menu_img = loadImage("menu.png")
+        self.help_img = loadImage("help.png")
+        self.menu_img = [loadImage("menu.png")]
         self.menu_hover_img = loadImage("menu_hover.png")
         
     def resize_images(self):
         self.bkgd_img.resize(width, height)
-        self.credits_img.resize(width/2, width/13)
-        self.menu_img.resize(self.menu_button.w, self.menu_button.h)
+        self.help_img.resize(int(width/2.5), width/13)
+        self.menu_img[0].resize(self.menu_button.w, self.menu_button.h)
         self.menu_hover_img.resize(self.menu_button.w, self.menu_button.h)
         
     def create_buttons(self):
-        self.menu_button = Simple_Button(50, 50, 28, 5, self.menu_img, self.menu_hover_img)
+        self.menu_button = Button(50, 50, 28, 5, self.menu_img, self.menu_hover_img)
+        
+    def reset(self):
+        frameRate(30)
 
     def display(self):
         imageMode(CORNER)
         image(self.bkgd_img, 0, 0)
         imageMode(CENTER)
-        image(self.credits_img, width/2, height/6)
+        image(self.help_img, width/2, height/6)
         self.menu_button.display()
         
         

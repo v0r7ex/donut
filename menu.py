@@ -1,5 +1,4 @@
-from simple_button import Simple_Button
-from animated_button import Animated_Button
+from button import Button
 
 class Menu():
     def __init__(self):
@@ -14,6 +13,9 @@ class Menu():
         self.load_play_images()
         self.load_settings_images()
         self.load_about_images()
+        self.play_word = loadImage("menu/play_word.png")
+        self.settings_word = loadImage("menu/settings_word.png")
+        self.about_word = loadImage("menu/about_word.png")
         
     def load_play_images(self):
         self.play_frames = []
@@ -39,15 +41,20 @@ class Menu():
             self.settings_frames[i].resize(self.settings_button.w, self.settings_button.h)
         for i in range(24):
             self.about_frames[i].resize(self.about_button.w, self.about_button.h)
+        self.play_word.resize(self.play_button.w, self.play_button.h)
+        self.settings_word.resize(self.settings_button.w, self.settings_button.h)
+        self.about_word.resize(self.about_button.w, self.about_button.h)
         
     def create_buttons(self):
-        self.play_button = Animated_Button(50, 70, 13, 14, self.play_frames, 11)
-        self.settings_button = Animated_Button(37, 75, 13, 14, self.settings_frames, 11)
-        self.about_button = Animated_Button(63, 75, 13, 14, self.about_frames, 11)
+        self.play_button = Button(50, 70, 13, 14, self.play_frames, self.play_word)
+        self.settings_button = Button(37, 75, 13, 14, self.settings_frames, self.settings_word)
+        self.about_button = Button(63, 75, 13, 14, self.about_frames, self.about_word)
         
     def reset(self):
         frameRate(30)
         self.play_button.reset()
+        self.settings_button.reset()
+        self.about_button.reset()
 
     def display(self):
         imageMode(CORNER)

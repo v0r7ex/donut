@@ -34,7 +34,7 @@ class Menu():
         
     def resize_images(self):
         self.bkgd_img.resize(width, height)
-        self.title_img.resize(int(68 * width/100), int(17 *height/100))
+        self.title_img.resize(int(68 * width/100), int(9.5 * width/100))
         for i in range(24):
             self.play_frames[i].resize(self.play_button.w, self.play_button.h)
         for i in range(24):

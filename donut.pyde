@@ -1,8 +1,9 @@
+
 add_library("minim")
 from program import Program
 
 def setup():
-    size(1920, 1080)
+    fullScreen(2) #optimize for 1920 by 1080
     global program_instance
     program_instance = Program()
     minim = Minim(this)

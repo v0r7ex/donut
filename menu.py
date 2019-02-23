@@ -67,7 +67,7 @@ class Menu():
         
     def click(self):
         if self.play_button.is_hovering():
-            return "game"
+            return "level_select"
         elif self.settings_button.is_hovering():
             return "settings"
         elif self.about_button.is_hovering():

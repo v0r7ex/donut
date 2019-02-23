@@ -13,6 +13,7 @@ class Program():
         self.pause = Pause()
         self.game = Game()
         self.level_end = Level_End()
+        self.level_select = Level_Select()
         self.gs_dict = {
                         "menu": self.menu,
                         "settings": self.settings_state,
@@ -20,6 +21,7 @@ class Program():
                         "pause": self.pause,
                         "game": self.game,
                         "level_end": self.level_end
+                        "level_select": self.level_select
                         }
         self.gs = self.menu
         self.menu_soundtrack = None #sounds loaded in setup()
@@ -28,7 +30,7 @@ class Program():
         
     def check_soundtrack(self):
         new_soundtrack = None
-        if self.gs == self.menu or self.gs == self.settings_state or self.gs == self.about:
+        if self.gs == self.menu or self.gs == self.settings_state or self.gs == self.about or self.gs == self.level_select:
             if self.current_soundtrack is not self.menu_soundtrack:
                 new_soundtrack = self.menu_soundtrack
         elif self.gs == self.game or self.gs == self.pause or self.gs == self.level_end:

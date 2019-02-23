@@ -3,6 +3,7 @@ from settings_state import Settings
 from about import About
 from pause import Pause
 from game import Game
+from level_select import Level_Select
 from level_end import Level_End
 
 class Program():
@@ -20,9 +21,12 @@ class Program():
                         "about": self.about,
                         "pause": self.pause,
                         "game": self.game,
-                        "level_end": self.level_end
+                        "level_end": self.level_end,
                         "level_select": self.level_select
                         }
+        self.level_dict = {
+                           "level0": self.game.level0
+                           }
         self.gs = self.menu
         self.menu_soundtrack = None #sounds loaded in setup()
         self.game_soundtrack = None
@@ -50,6 +54,11 @@ class Program():
     def click(self):
         result = self.gs.click()
         if result is not None:
-            self.gs = self.gs_dict[result]
-            self.gs.reset()
-            self.check_soundtrack()
+            if self.gs is self.level_select:
+                if result in self.level_dict:
+                    self.gs = self.game
+                    self.game.current_level = self.level_dict[result]
+            else:
+                self.gs = self.gs_dict[result]
+                self.gs.reset()
+                self.check_soundtrack()

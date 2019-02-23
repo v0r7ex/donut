@@ -11,6 +11,13 @@ def setup():
     program_instance.game_soundtrack = minim.loadFile("game/happy_life_fredji.mp3")
     program_instance.current_soundtrack = program_instance.menu_soundtrack
     program_instance.menu_soundtrack.loop()
+    global usable_keys = {
+                          "UP": False
+                          "DOWN": False
+                          "RIGHT": False
+                          "LEFT": False
+                          "
+                          }
     
     
 def draw():
@@ -22,3 +29,4 @@ def draw():
 def mousePressed():
     global program_instance
     program_instance.click()
+    

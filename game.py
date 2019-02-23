@@ -22,10 +22,10 @@ class Game():
         
     def reset(self):
         frameRate(30)
+        self.current_level = None
 
     def display(self):
-        pass
+        self.current_level.display()
         
-        
-    def click(self):
+    def click(self): #this method will be used to interact with the pause button, etc.
         pass

@@ -1,10 +1,3 @@
-"""
-
-The majority of this is code is not being used in the current version. It will allow the player to select a level to play, but at the moment it immediatly sends the player to level 0, as no others have been created.
-
-"""
-
-
 from button import Button
 
 class Level_Select():
@@ -14,6 +7,7 @@ class Level_Select():
         self.resize_images()
         
     def load_images(self):
+        self.bkgd_img = loadImage("white.jpg")
         self.img0 = [loadImage("level/level_icon0.png")]
         self.img1 = [loadImage("level/level_icon1.png")]
         self.img2 = [loadImage("level/level_icon2.png")]
@@ -26,6 +20,7 @@ class Level_Select():
         self.img9 = [loadImage("level/level_icon9.png")]
         
     def resize_images(self):
+        self.bkgd_img.resize(width, height)
         self.img0[0].resize(self.level_button0.w, self.level_button0.h)
         self.img1[0].resize(self.level_button1.w, self.level_button1.h)
         self.img2[0].resize(self.level_button2.w, self.level_button2.h)
@@ -38,21 +33,23 @@ class Level_Select():
         self.img9[0].resize(self.level_button9.w, self.level_button9.h)
     
     def create_buttons(self):
-        self.level_button0 = Button(30, 35, 5, 5, self.img0, 0)
-        self.level_button1 = Button(35, 35, 5, 5, self.img1, 0)
-        self.level_button2 = Button(40, 35, 5, 5, self.img2, 0)
-        self.level_button3 = Button(45, 35, 5, 5, self.img3, 0)
-        self.level_button4 = Button(50, 35, 5, 5, self.img4, 0)
-        self.level_button5 = Button(55, 35, 5, 5, self.img5, 0)
-        self.level_button6 = Button(60, 35, 5, 5, self.img6, 0)
-        self.level_button7 = Button(65, 35, 5, 5, self.img7, 0)
-        self.level_button8 = Button(70, 35, 5, 5, self.img8, 0)
-        self.level_button9 = Button(75, 35, 5, 5, self.img9, 0)
+        self.level_button0 = Button(30, 50, 8, 8, self.img0, self.img0[0])
+        self.level_button1 = Button(40, 50, 8, 8, self.img1, self.img1[0])
+        self.level_button2 = Button(50, 50, 8, 8, self.img2, self.img2[0])
+        self.level_button3 = Button(60, 50, 8, 8, self.img3, self.img3[0])
+        self.level_button4 = Button(70, 50, 8, 8, self.img4, self.img4[0])
+        self.level_button5 = Button(30, 72, 8, 8, self.img5, self.img5[0])
+        self.level_button6 = Button(40, 72, 8, 8, self.img6, self.img6[0])
+        self.level_button7 = Button(50, 72, 8, 8, self.img7, self.img7[0])
+        self.level_button8 = Button(60, 72, 8, 8, self.img8, self.img8[0])
+        self.level_button9 = Button(70, 72, 8, 8, self.img9, self.img9[0])
         
     def reset(self):
         pass
         
     def display(self):
+        imageMode(CORNER)
+        image(self.bkgd_img, 0, 0)
         self.level_button0.display()
         self.level_button1.display()
         self.level_button2.display()

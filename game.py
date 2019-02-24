@@ -18,7 +18,7 @@ class Game():
         pass
         
     def build_level0(self):
-        pass
+        self.level0 = None
         
     def reset(self):
         frameRate(30)

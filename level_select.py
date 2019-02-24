@@ -61,5 +61,6 @@ class Level_Select():
         self.level_button8.display()
         self.level_button9.display()
         
-    def click(self): #this method will need to be changed when other levels have been added
-        return "level0"
+    def click(self):
+        if self.level_button0.is_hovering():
+            return "level0"

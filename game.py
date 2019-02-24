@@ -1,4 +1,5 @@
 from button import Button
+from level import Level
 
 class Game():
     def __init__(self):
@@ -18,7 +19,9 @@ class Game():
         pass
         
     def build_level0(self):
-        self.level0 = None
+        self.level0_bkgd_img = loadImage("level/sky_blue.png")
+        self.level0_bkgd_img.resize(width, height)
+        self.level0 = Level(100, self.level0_bkgd_img)
         
     def reset(self):
         frameRate(30)
@@ -27,5 +30,5 @@ class Game():
     def display(self):
         self.current_level.display()
         
-    def click(self): #this method will be used to interact with the pause button, etc.
+    def click(self):
         pass

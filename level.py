@@ -1,7 +1,8 @@
 from button import Button
 
 class Level():
-    def __init__(self, width_in_blocks, background_img):
+    def __init__(self, donut, width_in_blocks, background_img):
+        self.donut = donut
         self.block_size = int(width/50)
         self.width_in_blocks = width_in_blocks
         self.height_in_blocks = 20
@@ -29,4 +30,4 @@ class Level():
                     grid[i][k].display()
         
     def click(self):
-        pass
+        pass5

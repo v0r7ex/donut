@@ -35,11 +35,15 @@ class Program():
     def check_soundtrack(self):
         new_soundtrack = None
         if self.gs == self.menu or self.gs == self.settings_state or self.gs == self.about or self.gs == self.level_select:
+            print "a"
             if self.current_soundtrack is not self.menu_soundtrack:
                 new_soundtrack = self.menu_soundtrack
         elif self.gs == self.game or self.gs == self.pause or self.gs == self.level_end:
+            print "b"
             if self.current_soundtrack is not self.game_soundtrack:
                 new_soundtrack = self.game_soundtrack
+        else:
+            print "c"
         if new_soundtrack is not None: #shiftGain() gradually changes the volume
             self.current_soundtrack.shiftGain(0, -50, 400)
             delay(400)
@@ -57,8 +61,8 @@ class Program():
             if self.gs is self.level_select:
                 if result in self.level_dict:
                     self.gs = self.game
-                    self.game.current_level = self.level_dict[result]
+                    self.game.current_level = self.level_dict[result]    
             else:
                 self.gs = self.gs_dict[result]
                 self.gs.reset()
-                self.check_soundtrack()
+            self.check_soundtrack()

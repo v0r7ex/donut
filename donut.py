@@ -1,9 +1,9 @@
 class Donut():
     def __init__(self):
-        self.w = int(14 * width/100)
-        self.h = int(14 * width/100)
+        self.w = int(9 * width/100)
+        self.h = int(9 * width/100)
         self.start_x = int(10 * width/100)
-        self.start_y = int(10 * width/100)
+        self.start_y = int(40 * width/100)
         self.end_x = self.start_x + self.w
         self.end_y = self.start_y + self.h
         self.load_images()

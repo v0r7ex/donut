@@ -6,7 +6,6 @@ class Game():
     def __init__(self):
         self.block_size = int(5 * width/100)
         self.load_images()
-        self.create_buttons()
         self.resize_images()
         self.donut = Donut()
         self.build_level0()
@@ -19,7 +18,6 @@ class Game():
         self.wood_block_img = loadImage("level/wood.png")
         
     def resize_images(self):
-        self.bkgd_img.resize(width, height)
         self.dirt_block_img.resize(self.block_size, self.block_size)
         self.grass_block_img.resize(self.block_size, self.block_size)
         self.stone_block_img.resize(self.block_size, self.block_size)

@@ -68,10 +68,13 @@ class Donut():
             frame_sequence = self.lamp_sequence_right if self.direction == "right" else self.lamp_cycle_left
         elif self.state == "die":
             frame_sequence = self.die_sequence
+        if self.current_frame < len(frame_sequence) - 1:
+            self.current_frame += 1
+        return frame_sequence[self.current_frame]
             
     def display(self):
         imageMode(CORNER)
-        img = self.iterate_cycle() if self.state == "stant" or self.state == "walk" else self.iterate_sequence()
+        img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.start_x, self.start_y)
         
         

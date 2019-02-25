@@ -28,7 +28,6 @@ class Level():
             for k in range(len(self.grid[i])):
                 if self.grid[i][k] is not None:
                     self.grid[i][k].display(x, y)
-                    
         self.donut.display()
         
     def click(self):

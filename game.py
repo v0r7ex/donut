@@ -12,7 +12,7 @@ class Game():
         self.current_level = None
         
     def load_images(self):
-        self.bkgd_img = loadImage("white.jpg")
+        self.dirt_block_img = loadImage(
 
     def resize_images(self):
         self.bkgd_img.resize(width, height)

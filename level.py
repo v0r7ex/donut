@@ -24,10 +24,10 @@ class Level():
     def display(self):
         imageMode(CORNER)
         image(self.bkgd_img, 0, 0)
-        for i in grid:
-            for k in grid[i]:
-                if grid[i][k] is not None:
-                    grid[i][k].display()
+        for i in range(len(self.grid)):
+            for k in range(len(self.grid[i])):
+                if self.grid[i][k] is not None:
+                    self.grid[i][k].display()
         
     def click(self):
-        pass5
+        pass

@@ -1,5 +1,5 @@
 from button import Button
-from donut
+from donut import Donut
 from level import Level
 
 class Game():
@@ -7,6 +7,7 @@ class Game():
         self.load_images()
         self.create_buttons()
         self.resize_images()
+        self.donut = Donut()
         self.build_level0()
         self.current_level = None
         
@@ -22,7 +23,7 @@ class Game():
     def build_level0(self):
         self.level0_bkgd_img = loadImage("level/sky_blue.png")
         self.level0_bkgd_img.resize(width, height)
-        self.level0 = Level(100, self.level0_bkgd_img)
+        self.level0 = Level(self.donut, 100, self.level0_bkgd_img)
         
     def reset(self):
         frameRate(30)

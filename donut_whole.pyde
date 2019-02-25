@@ -8,8 +8,8 @@ def setup():
     global usable_keys
     program_instance = Program()
     minim = Minim(this)
-    program_instance.menu_soundtrack = minim.loadFile("menu/smile_bensound.mp3")
-    program_instance.game_soundtrack = minim.loadFile("game/happy_life_fredji.mp3")
+    program_instance.menu_soundtrack = minim.loadFile("audio/smile_bensound.mp3")
+    program_instance.game_soundtrack = minim.loadFile("audio/happy_life_fredji.mp3")
     program_instance.current_soundtrack = program_instance.menu_soundtrack
     program_instance.menu_soundtrack.loop()
     usable_keys = {

@@ -8,16 +8,16 @@ class Level_Select():
         
     def load_images(self):
         self.bkgd_img = loadImage("white.jpg")
-        self.img0 = [loadImage("level/level_icon0.png")]
-        self.img1 = [loadImage("level/level_icon1.png")]
-        self.img2 = [loadImage("level/level_icon2.png")]
-        self.img3 = [loadImage("level/level_icon3.png")]
-        self.img4 = [loadImage("level/level_icon4.png")]
-        self.img5 = [loadImage("level/level_icon5.png")]
-        self.img6 = [loadImage("level/level_icon6.png")]
-        self.img7 = [loadImage("level/level_icon7.png")]
-        self.img8 = [loadImage("level/level_icon8.png")]
-        self.img9 = [loadImage("level/level_icon9.png")]
+        self.img0 = [loadImage("level_select/level_icon0.png")]
+        self.img1 = [loadImage("level_select/level_icon1.png")]
+        self.img2 = [loadImage("level_select/level_icon2.png")]
+        self.img3 = [loadImage("level_select/level_icon3.png")]
+        self.img4 = [loadImage("level_select/level_icon4.png")]
+        self.img5 = [loadImage("level_select/level_icon5.png")]
+        self.img6 = [loadImage("level_select/level_icon6.png")]
+        self.img7 = [loadImage("level_select/level_icon7.png")]
+        self.img8 = [loadImage("level_select/level_icon8.png")]
+        self.img9 = [loadImage("level_select/level_icon9.png")]
         
     def resize_images(self):
         self.bkgd_img.resize(width, height)

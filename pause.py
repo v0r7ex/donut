@@ -1,7 +1,7 @@
 from button import Button
 
 class Pause():
-        def __init__(self):
+    def __init__(self):
         self.load_images()
         self.create_buttons()
         self.resize_images()

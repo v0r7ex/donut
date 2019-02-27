@@ -26,8 +26,8 @@ class Game():
     def build_level0(self):
         self.level0_bkgd_img = loadImage("level/sky_blue.png")
         self.level0_bkgd_img.resize(width, height)
-        self.level0 = Level(self.donut, self.tile_size, 30, self.level0_bkgd_img)
-        self.level0.build_platform(10, 12, 5, self.wood_tile_img)
+        self.level0 = Level(self.donut, self.tile_size, 300, self.level0_bkgd_img)
+        self.level0.build_platform(10, 10, 5, self.wood_tile_img)
         
     def reset(self):
         frameRate(30)

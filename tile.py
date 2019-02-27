@@ -19,3 +19,4 @@ class Tile():
         if self.img is not None:
             imageMode(CORNER)
             image(self.img, self.x, self.y)
+   

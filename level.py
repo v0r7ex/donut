@@ -9,7 +9,6 @@ class Level():
         self.height_in_tiles = 20
         self.grid = [[None] * self.height_in_tiles] * self.width_in_tiles
         self.populate_grid()
-        print self.grid
         self.bkgd_img = background_img
         self.load_images()
         self.create_buttons()
@@ -25,11 +24,13 @@ class Level():
         pass
         
     def populate_grid(self):
-         for i in range(len(self.grid)):
+        for i in range(len(self.grid)):
             for k in range(len(self.grid[i])):
                 self.grid[i][k] = Tile(i * self.tile_size, k * self.tile_size, self.tile_size, None, False)
+                #print self.grid[i][k].x
+        print self.grid[2][4].x
                 
-    def build_platform(i_coord, k_coord, length_in_tiles, img, solid = True):
+    def build_platform(self, i_coord, k_coord, length_in_tiles, img, solid = True):
         for i in range(i_coord, i_coord + length_in_tiles + 1):
             self.grid[i][k_coord].img = img
             self.grid[i][k_coord].solid = solid
@@ -39,8 +40,7 @@ class Level():
         image(self.bkgd_img, 0, 0)
         for i in range(len(self.grid)):
             for k in range(len(self.grid[i])):
-                if self.grid[i][k] is not None:
-                    self.grid[i][k].display()
+                self.grid[i][k].display()
         self.donut.display()
         
     def click(self):

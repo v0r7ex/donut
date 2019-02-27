@@ -35,11 +35,9 @@ class Program():
     def check_soundtrack(self):
         new_soundtrack = None
         if self.gs == self.menu or self.gs == self.settings_state or self.gs == self.about or self.gs == self.level_select:
-            print "a"
             if self.current_soundtrack is not self.menu_soundtrack:
                 new_soundtrack = self.menu_soundtrack
         elif self.gs == self.game or self.gs == self.pause or self.gs == self.level_end:
-            print "b"
             if self.current_soundtrack is not self.game_soundtrack:
                 new_soundtrack = self.game_soundtrack
         else:

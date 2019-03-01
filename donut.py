@@ -66,9 +66,9 @@ class Donut():
     
     def iterate_sequence(self):
         if self.state == "jump":
-            frame_sequence = self.jump_sequence_right if self.direction == "right" else self.jump_cycle_left
+            frame_sequence = self.jump_sequence_right if self.direction == "right" else self.jump_sequence_left
         elif self.state == "land":
-            frame_sequence = self.lamp_sequence_right if self.direction == "right" else self.lamp_cycle_left
+            frame_sequence = self.lamp_sequence_right if self.direction == "right" else self.lamp_sequence_left
         elif self.state == "die":
             frame_sequence = self.die_sequence
         if self.current_frame < len(frame_sequence) - 1:

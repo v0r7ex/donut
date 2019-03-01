@@ -35,7 +35,7 @@ class Game():
         self.level0.build_platform(18, 11, 10, self.grass_tile_img)
         
     def reset(self):
-        frameRate(30)
+        frameRate(16)
         self.current_level = None
 
     def display(self):

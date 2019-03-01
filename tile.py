@@ -13,10 +13,13 @@ class Tile():
     
     def check_hit(self, test_x, test_y,):
         self.update_end_coords()
-        return True if self.x < test_x and test_x < self.end_x and self.y < test_y and test_y < self.end_y else False
+        return True if self.x <= test_x and test_x <= self.end_x and self.y <= test_y and test_y <= self.end_y else False
+    
+    def on_screen(self):
+        return True if self.x > 0 - self.tile_size and self.x < width else False
     
     def display(self):
-        if self.img is not None:
+        if self.img is not None and self.on_screen():
             imageMode(CORNER)
             image(self.img, self.x, self.y)
    

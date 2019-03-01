@@ -8,12 +8,13 @@ class Level():
         self.width_in_tiles = width_in_tiles
         self.height_in_tiles = 13
         self.grid = [[None] * self.height_in_tiles for _ in range(self.width_in_tiles)]
-    
         self.populate_grid()
         self.bkgd_img = background_img
         self.load_images()
         self.create_buttons()
         self.resize_images()
+        self.tile_scroll_pos = 0 #tile_scoll_pos and render_width_in_tiles are used to select a portion of the grid to iterate through when displaying
+        self.render_width_in_tiles = 30
         
     def load_images(self):
         pass
@@ -35,9 +36,11 @@ class Level():
             self.grid[i][k_coord].solid = solid
                 
     def display(self):
+        while self.grid[self.tile_scroll_pos][0].on_screen() is False:
+            self.tile_scroll_pos += 1
         imageMode(CORNER)
         image(self.bkgd_img, 0,-2)
-        for i in range(len(self.grid)):
+        for i in range(self.tile_scroll_pos, self.render_width_in_tiles):
             for k in range(len(self.grid[i])):
                 self.grid[i][k].display()
         self.donut.display()

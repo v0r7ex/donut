@@ -59,6 +59,7 @@ class Program():
             if self.gs is self.level_select:
                 if result in self.level_dict:
                     self.gs = self.game
+                    self.gs.reset()
                     self.game.current_level = self.level_dict[result]    
             else:
                 self.gs = self.gs_dict[result]

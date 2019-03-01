@@ -27,9 +27,13 @@ class Game():
         self.level0_bkgd_img = loadImage("level/sky_blue.png")
         self.level0_bkgd_img.resize(width, height)
         self.level0 = Level(self.donut, self.tile_size, 200, self.level0_bkgd_img)
-        self.level0.build_platform(20, 12, 0, self.wood_tile_img)
+        self.level0.build_platform(0, 12, 14, self.dirt_tile_img)
+        self.level0.build_platform(0, 11, 14, self.grass_tile_img)
+        self.level0.build_platform(10, 8, 3, self.stone_tile_img)        
+        self.level0.build_platform(0, 8, 3, self.stone_tile_img)
+        self.level0.build_platform(18, 12, 10, self.dirt_tile_img)
+        self.level0.build_platform(18, 11, 10, self.grass_tile_img)
         
-
     def reset(self):
         frameRate(30)
         self.current_level = None

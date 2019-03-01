@@ -1,9 +1,9 @@
 class Donut():
     def __init__(self):
-        self.w = int(9 * width/100)
-        self.h = int(9 * width/100)
+        self.w = int(11 * width/100)
+        self.h = int(10 * width/100)
         self.start_x = int(10 * width/100)
-        self.start_y = int(40 * width/100)
+        self.start_y = int(68 * height/100)
         self.end_x = self.start_x + self.w
         self.end_y = self.start_y + self.h
         self.load_images()
@@ -13,15 +13,18 @@ class Donut():
         self.current_frame = 0
         
     def load_images(self):
-        self.stand_cycle_right = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")]
-        self.stand_cycle_left = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")]
-        self.walk_cycle_right = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")] 
-        self.walk_cycle_left = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")]   
-        self.jump_sequence_right = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")]
-        self.jump_sequence_left = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")] 
-        self.land_sequence_right = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")] 
-        self.land_sequence_left = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")] 
-        self.die_sequence = [loadImage("donut/circle.png"), loadImage("donut/circle.png"), loadImage("donut/circle.png")]
+        self.stand_cycle_right = [loadImage("donut/stand/stand_right1.png")]
+        self.stand_cycle_left = [loadImage("donut/stand/stand_left1.png")]
+        self.walk_cycle_right = []
+        self.walk_cycle_left = []
+        for i in range(1, 16):
+            self.walk_cycle_right.append(loadImage("donut/walk/walk_right" + nf(i) + ".png"))
+            self.walk_cycle_left.append(loadImage("donut/walk/walk_left" + nf(i) + ".png"))
+        self.jump_sequence_right = [loadImage("donut/jump/jump_right1.png")]
+        self.jump_sequence_left = [loadImage("donut/jump/jump_left1.png")] 
+        self.land_sequence_right = [loadImage("donut/stand/stand_right1.png")] 
+        self.land_sequence_left = [loadImage("donut/stand/stand_left1.png")] 
+        self.die_sequence = [loadImage("donut/stand/stand_right1.png")]
         
     def resize_images(self):
         for img in self.stand_cycle_right:

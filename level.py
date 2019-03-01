@@ -34,13 +34,24 @@ class Level():
         for i in range(i_coord, i_coord + length_in_tiles + 1):
             self.grid[i][k_coord].img = img
             self.grid[i][k_coord].solid = solid
+            
+    def donut_at_solid(self, check_bottom = True, check_top = True):
+        for i in range(self.tile_scroll_pos, self.tile_scroll_pos + self.render_width_in_tiles):
+            for k in range(len(self.grid[i])):
+                if check_bottom is True:
+                    if self.donut.coord_in_bottom(self.grid[i][k].x, self.grid[i][k].y) is True:
+                        return True
+                if check_top is True:
+                    if self.donut.coord_in_top(self.grid[i][k].x, self.grid[i][k].y) is True:
+                        return True
+        return False
                 
     def display(self):
         while self.grid[self.tile_scroll_pos][0].on_screen() is False:
             self.tile_scroll_pos += 1
         imageMode(CORNER)
         image(self.bkgd_img, 0,-2)
-        for i in range(self.tile_scroll_pos, self.render_width_in_tiles):
+        for i in range(self.tile_scroll_pos, self.tile_scroll_pos + self.render_width_in_tiles):
             for k in range(len(self.grid[i])):
                 self.grid[i][k].display()
         self.donut.display()

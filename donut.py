@@ -1,11 +1,20 @@
 class Donut():
-    def __init__(self):
-        self.w = int(11 * width/100)
-        self.h = int(10 * width/100)
-        self.start_x = int(10 * width/100)
-        self.start_y = int(68 * height/100)
-        self.end_x = self.start_x + self.w
-        self.end_y = self.start_y + self.h
+    def __init__(self, tile_size):
+        self.tile_size = tile_size
+        self.img_width = int(11 * width/100)
+        self.img_height = int(10 * width/100)
+        self.img_x = int(10 * width/100)
+        self.img_y = int(68 * height/100)
+        self.box_x = (self.img_x + self.img_width/2) - self.tile_size #centers the 2 by 2 tile hit box relative to the img on the x-axis
+        self.box_y = (self.img_y + self.img_height) - self.tile_size * 2 #aligns the hit box with the bottom of the img
+        self.box_width = tile_size * 2
+        self.box_height = tile_size * 2
+        self.x_velocity = 0 #x velocity has infinite acceleration, except when falling in which case it slows by self.gravitational_accel
+        self.max_x_velocity = self.tile_size/4 #use -1 * max_x_velocity to move left
+        self.y_velocity = 0
+        self.max_y_velocity = -1 * self.tile_size/4
+        self.gravitational_accel = self.tile_size/100
+        self.terminal_velocity = self.tile_size/3
         self.load_images()
         self.resize_images()
         self.state = "stand"
@@ -28,30 +37,30 @@ class Donut():
         
     def resize_images(self):
         for img in self.stand_cycle_right:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.walk_cycle_right:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.jump_sequence_right:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.land_sequence_right:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.die_sequence:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.stand_cycle_left:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.walk_cycle_left:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.jump_sequence_left:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
         for img in self.land_sequence_left:
-            img.resize(self.w, self.h)
+            img.resize(self.img_width, self.img_height)
 
             
-    def coord_in_feet(self, x_coord, y_coord):
-        return True if x_coord >= self.start_x + self.w/5 and x_coord >= self.end_x - self.w/5 and y_coord >= self.start_y + self.h * 0.9 and y_coord <= self.end_y else False
+    def coord_in_bottom(self, x_coord, y_coord):
+        return True if x_coord >= self.box_x and x_coord >= self.box_x + self.box_width and y_coord >= self.box_y + self.box_height/2 and y_coord <= self.box_y + self.box_height else False
     
-    def coord_in_donut(self, x_coord, y_coord):
-        return True if x_coord > self.start_x and x_coord > self.end_x and y_coord > self.start_y and y_coord < self.end_y else False
+    def coord_in_top(self, x_coord, y_coord):
+        return True if x_coord >= self.box_x and x_coord >= self.box_x + self.box_width and y_coord >= self.box_y and y_coord <= self.box_y + self.box_height/2 else False
             
     def iterate_cycle(self):
         if self.state == "stand":
@@ -78,6 +87,6 @@ class Donut():
     def display(self):
         imageMode(CORNER)
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
-        image(img, self.start_x, self.start_y)
+        image(img, self.img_x, self.img_y)
         
         

@@ -4,7 +4,7 @@ from level import Level
 
 class Game():
     def __init__(self):
-        self.tile_size = int(5 * width/100)
+        self.tile_size = int(7.7 * height/100)
         self.load_images()
         self.resize_images()
         self.donut = Donut()
@@ -26,9 +26,10 @@ class Game():
     def build_level0(self):
         self.level0_bkgd_img = loadImage("level/sky_blue.png")
         self.level0_bkgd_img.resize(width, height)
-        self.level0 = Level(self.donut, self.tile_size, 300, self.level0_bkgd_img)
-        self.level0.build_platform(10, 10, 5, self.wood_tile_img)
+        self.level0 = Level(self.donut, self.tile_size, 200, self.level0_bkgd_img)
+        self.level0.build_platform(20, 12, 0, self.wood_tile_img)
         
+
     def reset(self):
         frameRate(30)
         self.current_level = None

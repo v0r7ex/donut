@@ -6,7 +6,7 @@ class Level():
         self.donut = donut
         self.tile_size = tile_size
         self.width_in_tiles = width_in_tiles
-        self.height_in_tiles = 20
+        self.height_in_tiles = 13
         self.grid = [[None] * self.height_in_tiles for _ in range(self.width_in_tiles)]
     
         self.populate_grid()
@@ -36,7 +36,7 @@ class Level():
                 
     def display(self):
         imageMode(CORNER)
-        image(self.bkgd_img, 0, 0)
+        image(self.bkgd_img, 0,-2)
         for i in range(len(self.grid)):
             for k in range(len(self.grid[i])):
                 self.grid[i][k].display()

@@ -7,7 +7,7 @@ class Game():
         self.tile_size = int(7.7 * height/100)
         self.load_images()
         self.resize_images()
-        self.donut = Donut()
+        self.donut = Donut(self.tile_size)
         self.build_level0()
         self.current_level = None
         
@@ -32,6 +32,8 @@ class Game():
         self.level0.build_platform(10, 8, 3, self.stone_tile_img)        
         self.level0.build_platform(18, 12, 10, self.dirt_tile_img)
         self.level0.build_platform(18, 11, 10, self.grass_tile_img)
+        self.level0.build_platform(0, 8, 5, self.stone_tile_img)        
+
         
     def reset(self):
         frameRate(16)

@@ -60,6 +60,11 @@ class Program():
                     self.gs.reset()
                     self.game.current_level = self.level_dict[result]    
             else:
-                self.gs = self.gs_dict[result]
-                self.gs.reset()
+                if self.gs_dict[result] is self.level_select: #temporary
+                    self.gs = self.game
+                    self.gs.reset()
+                    self.game.current_level = self.level_dict["level0"]   
+                else:
+                    self.gs = self.gs_dict[result]
+                    self.gs.reset()
             self.check_soundtrack()

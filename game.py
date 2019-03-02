@@ -30,7 +30,7 @@ class Game():
         self.level0.build_platform(0, 12, 14, self.dirt_tile_img, False)
         self.level0.build_platform(0, 11, 14, self.grass_tile_img)
         self.level0.build_platform(15, 12, 2, self.ditch_tile_img, False)
-        self.level0.build_platform(8, 8, 4, self.stone_tile_img)        
+        self.level0.build_platform(5, 8, 3, self.stone_tile_img)        
         self.level0.build_platform(18, 12, 10, self.dirt_tile_img, False)
         self.level0.build_platform(18, 11, 10, self.grass_tile_img)
 

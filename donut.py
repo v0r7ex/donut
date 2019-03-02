@@ -108,6 +108,6 @@ class Donut():
         imageMode(CORNER)
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.img_x, self.img_y)
-        rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
+        #rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
         
         

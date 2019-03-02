@@ -23,6 +23,7 @@ class Donut():
         self.state = "stand"
         self.direction = "right"
         self.active_jump = False
+        self.frames_since_land = 0
         self.current_frame = 0
         
     def load_images(self):
@@ -108,6 +109,10 @@ class Donut():
             self.state = "walk"
         if self.x_velocity != 0:
             self.direction = "right" if self.x_velocity > 0 else "left"
+        if self.active_jump is False:
+            self.frames_since_land += 1
+        else:
+            self.frames_since_land = 0
         imageMode(CORNER)
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.img_x, self.img_y)

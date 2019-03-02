@@ -63,7 +63,7 @@ class Level():
     
     def donut_user_imput(self):
         if self.donut_at_solid(True, False):
-            if self.usable_keys[" "] is True and self.donut.active_jump is False:
+            if self.usable_keys[" "] is True and self.donut.active_jump is False and self.donut.frames_since_land > 2:
                 self.donut.y_velocity = self.donut.jump_y_velocity
                 self.donut.active_jump = True
         if (self.usable_keys[RIGHT] is True and self.usable_keys[LEFT] is True) or (self.usable_keys[RIGHT] is False and self.usable_keys[LEFT] is False):
@@ -77,6 +77,7 @@ class Level():
             self.donut.jump()
         else:
             self.donut.y_velocity = 0
+            self.donut.active_jump = False
         if self.donut.x_velocity != 0:
             self.donut_x_shift()
     

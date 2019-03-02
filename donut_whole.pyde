@@ -3,7 +3,7 @@ add_library("minim")
 from program import Program
 
 def setup():
-    fullScreen(1) #optimize for 1920 by 1080
+    fullScreen(2) #optimize for 1920 by 1080
     global program_instance
     global usable_keys
     program_instance = Program()
@@ -19,6 +19,7 @@ def setup():
                     LEFT: False,
                     " ":  False
                     }
+    noFill()
    
 def draw():
     global program_instance

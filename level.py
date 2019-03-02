@@ -45,10 +45,15 @@ class Level():
                     if self.donut.coord_in_top(self.grid[i][k].x, self.grid[i][k].y) is True:
                         return True
         return False
+    
+    def run_donut(self):
+        if self.donut_at_solid(True, False) is False:
+            self.donut.fall()
                 
     def display(self):
         while self.grid[self.tile_scroll_pos][0].on_screen() is False:
             self.tile_scroll_pos += 1
+        self.run_donut()
         imageMode(CORNER)
         image(self.bkgd_img, 0,-2)
         for i in range(self.tile_scroll_pos, self.tile_scroll_pos + self.render_width_in_tiles):

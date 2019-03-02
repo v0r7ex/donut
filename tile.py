@@ -1,11 +1,12 @@
 class Tile():
-    def __init__(self, x, y, tile_size, img, solid):
+    def __init__(self, x, y, tile_size, img, solid, fall_through):
         self.x = x
         self.y = y
         self.tile_size = tile_size
         self.update_end_coords()
         self.img = img
         self.solid = solid
+        self.fall_through = fall_through
         
     def update_end_coords(self):
         self.end_x = self.x + self.tile_size

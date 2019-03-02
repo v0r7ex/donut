@@ -24,6 +24,7 @@ class Donut():
         self.direction = "right"
         self.active_jump = False
         self.frames_since_land = 0
+        self.falling_through = False
         self.current_frame = 0
         
     def load_images(self):
@@ -116,6 +117,6 @@ class Donut():
         imageMode(CORNER)
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.img_x, self.img_y)
-        rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
+        #rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
         
         

@@ -63,8 +63,9 @@ class Level():
     
     def donut_user_imput(self):
         if self.donut_at_solid(True, False):
-            if self.usable_keys[UP] is True:
+            if self.usable_keys[" "] is True and self.donut.active_jump is False:
                 self.donut.y_velocity = self.donut.jump_y_velocity
+                self.donut.active_jump = True
         if (self.usable_keys[RIGHT] is True and self.usable_keys[LEFT] is True) or (self.usable_keys[RIGHT] is False and self.usable_keys[LEFT] is False):
             self.donut.x_velocity = 0
         else:
@@ -72,8 +73,6 @@ class Level():
             
     def run_donut(self):
         self.donut_user_imput()
-        if self.donut_at_solid(False, True) is True and self.donut.y_velocity < 0:
-            self.donut.y_velocity = 0
         if self.donut_at_solid(True, False) is False or self.donut.y_velocity < 0:
             self.donut.jump()
         else:

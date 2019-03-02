@@ -13,13 +13,16 @@ class Donut():
         self.max_x_velocity = self.tile_size/4 #use -1 * max_x_velocity to move left
         self.max_x_pos = width/7
         self.y_velocity = 0
-        self.jump_y_velocity = -1 * self.tile_size/2 
-        self.gravitational_accel = 2 * floor(self.tile_size/40) 
+        self.jump_y_velocity = -1 * self.tile_size/1.7
+        self.gravitational_accel = 3 * floor(self.tile_size/40) 
         self.terminal_velocity = self.gravitational_accel * 5
+        #self.gravitational_accel = 2 * floor(self.tile_size/40) 
+        #self.terminal_velocity = self.gravitational_accel * 5
         self.load_images()
         self.resize_images()
         self.state = "stand"
         self.direction = "right"
+        self.active_jump = False
         self.current_frame = 0
         
     def load_images(self):

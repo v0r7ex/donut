@@ -51,7 +51,6 @@ class Menu():
         self.about_button = Button(63, 75, 13, 14, self.about_frames, self.about_word)
         
     def reset(self):
-        frameRate(30)
         self.play_button.reset()
         self.settings_button.reset()
         self.about_button.reset()

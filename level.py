@@ -49,6 +49,9 @@ class Level():
     def run_donut(self):
         if self.donut_at_solid(True, False) is False:
             self.donut.fall()
+        else:
+            self.donut.state = "stand" #temporary
+            self.donut.y_velocity = 0
                 
     def display(self):
         while self.grid[self.tile_scroll_pos][0].on_screen() is False:

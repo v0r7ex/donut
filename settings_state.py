@@ -16,7 +16,7 @@ class Settings():
         pass
         
     def reset(self):
-        frameRate(30)
+        pass
 
     def display(self):
         imageMode(CORNER)

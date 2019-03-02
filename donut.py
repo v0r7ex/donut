@@ -4,7 +4,7 @@ class Donut():
         self.img_width = int(2.5 * self.tile_size)
         self.img_height = int(0.9 * self.img_width)
         self.img_x = 2 * self.tile_size
-        self.img_y = 5 * self.tile_size
+        self.img_y = 1 * self.tile_size
         self.box_x = int(self.img_x + 0.25 * self.img_width)
         self.box_y = int(self.img_y + 0.15 * self.img_height)
         self.box_width = int(0.5 * self.img_width)
@@ -12,9 +12,9 @@ class Donut():
         self.x_velocity = 0 #x_velocity has infinite acceleration
         self.max_x_velocity = self.tile_size/4 #use -1 * max_x_velocity to move left
         self.y_velocity = 0
-        self.jump_y_velocity = -1 * self.tile_size/4 
-        self.gravitational_accel = self.tile_size/100
-        self.terminal_velocity = self.tile_size/3
+        self.jump_y_velocity = -1 * self.tile_size/5 
+        self.gravitational_accel = floor(self.tile_size/40) 
+        self.terminal_velocity = self.gravitational_accel * 10
         self.load_images()
         self.resize_images()
         self.state = "stand"
@@ -63,6 +63,7 @@ class Donut():
         return True if x_coord >= self.box_x and x_coord <= self.box_x + self.box_width and y_coord >= self.box_y and y_coord <= self.box_y + self.box_height/2 else False
     
     def fall(self):
+        #print self.y_velocity
         if self.state is not "jump":
             self.state = "jump"
         if self.y_velocity < self.terminal_velocity:
@@ -100,5 +101,6 @@ class Donut():
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.img_x, self.img_y)
         rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
+        print self.y_velocity
         
         

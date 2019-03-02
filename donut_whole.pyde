@@ -4,6 +4,7 @@ from program import Program
 
 def setup():
     fullScreen(2) #optimize for 1920 by 1080
+    frameRate(30)
     global program_instance
     global usable_keys
     program_instance = Program()

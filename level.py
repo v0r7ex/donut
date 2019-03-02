@@ -39,10 +39,10 @@ class Level():
         for i in range(self.tile_scroll_pos, self.tile_scroll_pos + self.render_width_in_tiles):
             for k in range(len(self.grid[i])):
                 if check_bottom is True:
-                    if self.donut.coord_in_bottom(self.grid[i][k].x, self.grid[i][k].y) is True:
+                    if self.donut.coord_in_bottom(self.grid[i][k].x, self.grid[i][k].y) is True and self.grid[i][k].solid is True:
                         return True
                 if check_top is True:
-                    if self.donut.coord_in_top(self.grid[i][k].x, self.grid[i][k].y) is True:
+                    if self.donut.coord_in_top(self.grid[i][k].x, self.grid[i][k].y) is True and self.grid[i][k].solid is True:
                         return True
         return False
     
@@ -59,6 +59,7 @@ class Level():
         for i in range(self.tile_scroll_pos, self.tile_scroll_pos + self.render_width_in_tiles):
             for k in range(len(self.grid[i])):
                 self.grid[i][k].display()
+                rect(self.grid[i][k].x, self.grid[i][k].y, self.tile_size, self.tile_size)
         self.donut.display()
         
     def click(self):

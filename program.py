@@ -40,8 +40,6 @@ class Program():
         elif self.gs == self.game or self.gs == self.pause or self.gs == self.level_end:
             if self.current_soundtrack is not self.game_soundtrack:
                 new_soundtrack = self.game_soundtrack
-        else:
-            print "c"
         if new_soundtrack is not None: #shiftGain() gradually changes the volume
             self.current_soundtrack.shiftGain(0, -50, 400)
             delay(400)

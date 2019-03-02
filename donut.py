@@ -57,16 +57,16 @@ class Donut():
 
             
     def coord_in_bottom(self, x_coord, y_coord):
-        return True if x_coord >= self.box_x and x_coord >= self.box_x + self.box_width and y_coord >= self.box_y + self.box_height/2 and y_coord <= self.box_y + self.box_height else False
+        return True if x_coord >= self.box_x and x_coord <= self.box_x + self.box_width and y_coord >= self.box_y + self.box_height/2 and y_coord <= self.box_y + self.box_height else False
     
     def coord_in_top(self, x_coord, y_coord):
-        return True if x_coord >= self.box_x and x_coord >= self.box_x + self.box_width and y_coord >= self.box_y and y_coord <= self.box_y + self.box_height/2 else False
+        return True if x_coord >= self.box_x and x_coord <= self.box_x + self.box_width and y_coord >= self.box_y and y_coord <= self.box_y + self.box_height/2 else False
     
     def fall(self):
         if self.state is not "jump":
             self.state = "jump"
         if self.y_velocity < self.terminal_velocity:
-            self.y_velodity += self.gravitational_accel
+            self.y_velocity += self.gravitational_accel
         self.img_y += self.y_velocity
         self.box_y += self.y_velocity
         

@@ -8,6 +8,7 @@ class Tile():
         self.solid = solid
         self.fall_through = fall_through
         self.check_point = check_point
+        self.check_point_num = 0
         
     def update_end_coords(self):
         self.end_x = self.x + self.tile_size

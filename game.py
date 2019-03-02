@@ -33,7 +33,7 @@ class Game():
     def build_level0(self, usable_keys):
         self.level0_bkgd_img = loadImage("level/sky.png")
         self.level0_bkgd_img.resize(width, height)
-        self.level0 = Level(self.donut, self.tile_size, usable_keys, 400, self.level0_bkgd_img)
+        self.level0 = Level(self.donut, self.tile_size, usable_keys, 400, self.level0_bkgd_img, self.check_point2_img)
         self.level0.build_platform(0, 12, 14, self.dirt_tile_img, False)
         self.level0.build_platform(0, 11, 14, self.grass_tile_img)
         self.level0.build_platform(10, 10, 0, self.flower1_img, False)

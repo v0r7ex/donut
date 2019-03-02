@@ -17,14 +17,19 @@ class Game():
         self.stone_tile_img = loadImage("level/stone.png")
         self.ditch_tile_img = loadImage("level/ditch.png")
         self.flower1_img = loadImage("level/flower1.png")
+        self.check_point1_img = loadImage("level/checkpoint1.png")
+        self.check_point2_img = loadImage("level/checkpoint2.png")
         
     def resize_images(self):
         self.dirt_tile_img.resize(self.tile_size, self.tile_size)
         self.grass_tile_img.resize(self.tile_size, self.tile_size)
         self.stone_tile_img.resize(self.tile_size, self.tile_size)
         self.ditch_tile_img.resize(self.tile_size, self.tile_size)
-        self.flower1_img.resize(self.tile_size, self.tile_size)
+        self.flower1_img.resize(self.tile_size, self.tile_size)        
+        self.check_point1_img.resize(self.tile_size, self.tile_size)
+        self.check_point2_img.resize(self.tile_size, self.tile_size)
         
+
     def build_level0(self, usable_keys):
         self.level0_bkgd_img = loadImage("level/sky.png")
         self.level0_bkgd_img.resize(width, height)
@@ -36,6 +41,7 @@ class Game():
         self.level0.build_platform(5, 8, 3, self.stone_tile_img, True, True)        
         self.level0.build_platform(18, 12, 10, self.dirt_tile_img, False)
         self.level0.build_platform(18, 11, 10, self.grass_tile_img)
+        self.level0.build_platform(21, 10, 0, self.check_point1_img, False, False, True)
 
         
     def reset(self):

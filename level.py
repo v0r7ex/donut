@@ -31,11 +31,12 @@ class Level():
             for k in range(len(self.grid[i])):
                 self.grid[i][k] = Tile(i * self.tile_size, k * self.tile_size, self.tile_size, None, False, False)
                 
-    def build_platform(self, i_coord, k_coord, length_in_tiles, img, solid = True, fall_through = False):
+    def build_platform(self, i_coord, k_coord, length_in_tiles, img, solid = True, fall_through = False, check_point = False):
         for i in range(i_coord, i_coord + length_in_tiles + 1):
             self.grid[i][k_coord].img = img
             self.grid[i][k_coord].solid = solid
             self.grid[i][k_coord].fall_through = fall_through
+            self.grid[i][k_coord].check_point = check_point
             
     def donut_at_solid(self, check_bottom = True, check_top = True, return_tile = False):
         grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1

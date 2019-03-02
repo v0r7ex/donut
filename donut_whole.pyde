@@ -1,5 +1,5 @@
-
 add_library("minim")
+from program import Program
 from program import Program
 
 def setup():
@@ -7,12 +7,6 @@ def setup():
     frameRate(30)
     global program_instance
     global usable_keys
-    program_instance = Program()
-    minim = Minim(this)
-    program_instance.menu_soundtrack = minim.loadFile("audio/smile_bensound.mp3")
-    program_instance.game_soundtrack = minim.loadFile("audio/happy_life_fredji.mp3")
-    program_instance.current_soundtrack = program_instance.menu_soundtrack
-    program_instance.menu_soundtrack.loop()
     usable_keys = {
                     UP: False,
                     DOWN: False,
@@ -20,6 +14,13 @@ def setup():
                     LEFT: False,
                     " ":  False
                     }
+    program_instance = Program(usable_keys)
+    minim = Minim(this)
+    program_instance.menu_soundtrack = minim.loadFile("audio/smile_bensound.mp3")
+    program_instance.game_soundtrack = minim.loadFile("audio/happy_life_fredji.mp3")
+    program_instance.current_soundtrack = program_instance.menu_soundtrack
+    program_instance.menu_soundtrack.loop()
+    
     noFill()
    
 def draw():

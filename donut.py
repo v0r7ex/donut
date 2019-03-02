@@ -3,14 +3,15 @@ class Donut():
         self.tile_size = tile_size
         self.img_width = int(2.5 * self.tile_size)
         self.img_height = int(0.9 * self.img_width)
-        self.img_x = 2 * self.tile_size
-        self.img_y = 1 * self.tile_size
+        self.img_x = width/10
+        self.img_y = 0
         self.box_x = int(self.img_x + 0.25 * self.img_width)
         self.box_y = int(self.img_y + 0.15 * self.img_height)
         self.box_width = int(0.5 * self.img_width)
         self.box_height = int(0.85 * self.img_height)
         self.x_velocity = 0 #x_velocity has infinite acceleration
         self.max_x_velocity = self.tile_size/4 #use -1 * max_x_velocity to move left
+        self.max_x_pos = width/7
         self.y_velocity = 0
         self.jump_y_velocity = -1 * self.tile_size/5 
         self.gravitational_accel = floor(self.tile_size/40) 
@@ -62,10 +63,7 @@ class Donut():
     def coord_in_top(self, x_coord, y_coord):
         return True if x_coord >= self.box_x and x_coord <= self.box_x + self.box_width and y_coord >= self.box_y and y_coord <= self.box_y + self.box_height/2 else False
     
-    def fall(self):
-        #print self.y_velocity
-        if self.state is not "jump":
-            self.state = "jump"
+    def jump(self):
         if self.y_velocity < self.terminal_velocity:
             self.y_velocity += self.gravitational_accel
         self.img_y += self.y_velocity
@@ -97,10 +95,19 @@ class Donut():
         return frame_sequence[self.current_frame]
             
     def display(self):
+        if self.y_velocity != 0:
+            if self.state is not "jump":
+                self.current_frame = 0
+            self.state = "jump"
+        elif self.x_velocity == 0:
+            self.state = "stand"
+        else:
+            self.state = "walk"
+        if self.x_velocity != 0:
+            self.direction = "right" if self.x_velocity > 0 else "left"
         imageMode(CORNER)
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.img_x, self.img_y)
         rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
-        print self.y_velocity
         
         

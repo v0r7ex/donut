@@ -7,12 +7,12 @@ from level_select import Level_Select
 from level_end import Level_End
 
 class Program():
-    def __init__(self):
+    def __init__(self, usable_keys):
         self.menu = Menu()
         self.settings_state = Settings()
         self.about = About()
         self.pause = Pause()
-        self.game = Game()
+        self.game = Game(usable_keys)
         self.level_end = Level_End()
         self.level_select = Level_Select()
         self.gs_dict = {

@@ -75,7 +75,33 @@ class Level():
                         self.grid[i][k].img = self.check_point2_img
                         if self.last_check_point < self.grid[i][k].check_point_num:
                             self.last_check_point = self.grid[i][k].check_point_num
-                        
+                            
+    def die(self):
+        if self.last_check_point == 0:
+            respawn_i = 3
+            respawn_k = 3
+        else:
+            for i in range(len(self.grid)):
+                for k in range(len(self.grid[i])):
+                    if self.grid[i][k].check_point_num == self.last_check_point:
+                        respawn_i = i
+                        respawn_k = k
+        scroll_speed = self.grid[self.tile_scroll_pos][0].x - self.grid[respawn_i][respawn_k].x + self.tile_size
+        if self.grid[respawn_i + 20][respawn_k].on_screen() is False:
+             for i in range(len(self.grid)):
+                for k in range(len(self.grid[i])):
+                    self.grid[i][k].x -= scroll_speed
+                    self.donut.img_x = -300
+                    self.donut.box_x = int(self.donut.img_x + 0.25 * self.donut.img_width)
+        else:
+            self.donut.dead = False
+            self.donut.img_x = self.grid[respawn_i][respawn_k].x
+            self.donut.box_x = int(self.donut.img_x + 0.25 * self.donut.img_width)
+            self.donut.img_y = self.grid[respawn_i][respawn_k].y - self.donut.img_height
+            self.donut.box_y = int(self.donut.img_y + 0.15 * self.donut.img_height)
+        while self.grid[self.tile_scroll_pos][0].on_screen() is False:
+            self.tile_scroll_pos -= int(scroll_speed / self.tile_size)
+            
     
     def donut_user_imput(self):
         if self.donut_at_solid(True, False):
@@ -104,9 +130,14 @@ class Level():
         self.test_check_point()
     
     def display(self):
-        while self.grid[self.tile_scroll_pos][0].on_screen() is False:
-            self.tile_scroll_pos += 1
-        self.run_donut()
+        if self.donut.box_y + self.donut.box_height/2 > height:
+            self.donut.dead = True
+        if self.donut.dead is True:
+            self.die()
+        else:
+            while self.grid[self.tile_scroll_pos][0].on_screen() is False:
+                self.tile_scroll_pos += 1
+            self.run_donut()
         imageMode(CORNER)
         image(self.bkgd_img, 0,-2)
         grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1

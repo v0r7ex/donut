@@ -16,8 +16,6 @@ class Donut():
         self.jump_y_velocity = -1 * self.tile_size/1.7
         self.gravitational_accel = 3 * floor(self.tile_size/40) 
         self.terminal_velocity = self.gravitational_accel * 5
-        #self.gravitational_accel = 2 * floor(self.tile_size/40) 
-        #self.terminal_velocity = self.gravitational_accel * 5
         self.load_images()
         self.resize_images()
         self.state = "stand"

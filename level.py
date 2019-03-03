@@ -130,14 +130,16 @@ class Level():
         self.test_check_point()
     
     def display(self):
+        '''
         if self.donut.box_y + self.donut.box_height/2 > height:
             self.donut.dead = True
         if self.donut.dead is True:
             self.die()
         else:
-            while self.grid[self.tile_scroll_pos][0].on_screen() is False:
-                self.tile_scroll_pos += 1
-            self.run_donut()
+        '''
+        while self.grid[self.tile_scroll_pos][0].on_screen() is False:
+            self.tile_scroll_pos += 1
+        self.run_donut()
         imageMode(CORNER)
         image(self.bkgd_img, 0,-2)
         grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1

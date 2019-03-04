@@ -55,7 +55,7 @@ class Level():
     
     def donut_x_shift(self):
         if self.donut.x_velocity < 0: 
-            if self.donut.img_x + self.donut.x_velocity > 0: #prevents donut from moving off the left side of the screen
+            if self.donut.img_x + self.donut.x_velocity > -0.1 * self.donut.img_width: #prevents donut from moving off the left side of the screen
                     self.donut.img_x += self.donut.x_velocity
                     self.donut.box_x += self.donut.x_velocity
         elif self.donut.img_x < self.donut.max_x_pos or self.grid[len(self.grid) - 1][0].on_screen(): 
@@ -88,8 +88,8 @@ class Level():
                         respawn_k = k
         scroll_distance = self.grid[self.tile_scroll_pos][0].x - self.grid[respawn_i][respawn_k].x
         scroll_speed = int(scroll_distance / 20)
-        if scroll_speed < self.tile_size/2:
-            scroll_speed = self.tile_size/2
+        if scroll_speed < self.tile_size:
+            scroll_speed = self.tile_size
         if self.grid[respawn_i - 3][respawn_k].on_screen() is False:
             for i in range(len(self.grid)):
                 for k in range(len(self.grid[i])):
@@ -158,7 +158,6 @@ class Level():
         image(self.bkgd_img, 0,-2)
         grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1
         for i in range(self.tile_scroll_pos, grid_render_end):
-            #for i in range(len(self.grid)):
             for k in range(len(self.grid[i])):
                 self.grid[i][k].display()
                 #rect(self.grid[i][k].x, self.grid[i][k].y, self.tile_size, self.tile_size)

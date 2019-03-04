@@ -63,7 +63,7 @@ class Donut():
 
             
     def coord_in_bottom(self, x_coord, y_coord):
-        return True if x_coord >= self.box_x and x_coord <= self.box_x + self.box_width and y_coord >= self.box_y + self.box_height/2 and y_coord <= self.box_y + self.box_height else False
+        return True if x_coord >= self.box_x and x_coord <= self.box_x + self.box_width and y_coord >= self.box_y + 0.75 * self.box_height and y_coord <= self.box_y + self.box_height else False
     
     def coord_in_top(self, x_coord, y_coord):
         return True if x_coord >= self.box_x and x_coord <= self.box_x + self.box_width and y_coord >= self.box_y and y_coord <= self.box_y + self.box_height/2 else False
@@ -73,9 +73,6 @@ class Donut():
             self.y_velocity += self.gravitational_accel
         self.img_y += self.y_velocity
         self.box_y += self.y_velocity
-        
-    def x_shift(self):
-        pass
             
     def iterate_cycle(self):
         if self.state == "stand":

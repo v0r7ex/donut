@@ -25,6 +25,7 @@ class Donut():
         self.falling_through = False
         self.current_frame = 0
         self.dead = False
+        self.coma_frames = 0
         
     def load_images(self):
         self.stand_cycle_right = [loadImage("donut/stand/stand_right1.png")]

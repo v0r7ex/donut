@@ -45,7 +45,7 @@ class Game():
         self.level0.build_platform(23, 10, 0, self.flower1_img, False)
         self.level0.build_platform(27, 6, 3, self.stone_tile_img, True, True)
         self.level0.build_platform(33, 4, 4, self.stone_tile_img, True, True)
-        self.level0.build_platform(34, 3, 0, self.check_point1_img, False, False, True)
+        self.level0.build_platform(34, 3, 0, self.check_point1_img, False, False, True, 1)
         self.level0.build_platform(42, 4, 0, self.stone_tile_img, True, True)
         self.level0.build_platform(46, 4, 0, self.stone_tile_img, True, True)
         self.level0.build_platform(50, 4, 0, self.stone_tile_img, True, True)

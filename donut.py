@@ -5,9 +5,9 @@ class Donut():
         self.img_height = int(0.9 * self.img_width)
         self.img_x = width/10
         self.img_y = 0
-        self.box_x = int(self.img_x + 0.25 * self.img_width)
+        self.box_x = (self.img_x + self.img_width/2) - self.tile_size/2
         self.box_y = int(self.img_y + 0.15 * self.img_height)
-        self.box_width = int(0.5 * self.img_width)
+        self.box_width = self.tile_size
         self.box_height = int(0.85 * self.img_height)
         self.x_velocity = 0 #x_velocity has infinite acceleration
         self.max_x_velocity = self.tile_size/4 #use -1 * max_x_velocity to move left

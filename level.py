@@ -71,7 +71,7 @@ class Level():
         for i in range(self.tile_scroll_pos, grid_render_end):
             for k in range(len(self.grid[i])):
                 if self.grid[i][k].check_point == True:
-                    if self.donut.coord_in_bottom(self.grid[i][k].x, self.grid[i][k].y) is True or self.donut.coord_in_top(self.grid[i][k].x, self.grid[i][k].y) is True:
+                    if (self.donut.coord_in_bottom(self.grid[i][k].x, self.grid[i][k].y) is True or self.donut.coord_in_top(self.grid[i][k].x, self.grid[i][k].y) is True) or (self.donut.coord_in_bottom(self.grid[i][k].x + self.tile_size, self.grid[i][k].y) is True or self.donut.coord_in_top(self.grid[i][k].x + self.tile_size, self.grid[i][k].y) is True):
                         self.grid[i][k].img = self.check_point2_img
                         if self.last_check_point < self.grid[i][k].check_point_num:
                             self.last_check_point = self.grid[i][k].check_point_num
@@ -97,7 +97,7 @@ class Level():
         else:
             self.donut.dead = False
             self.donut.img_x = self.grid[respawn_i][respawn_k].x
-            self.donut.box_x = int(self.donut.img_x + 0.25 * self.donut.img_width)
+            self.donut.box_x = (self.donut.img_x + self.donut.img_width/2) - self.tile_size/2
             self.donut.img_y = self.grid[respawn_i][respawn_k].y - self.donut.img_height
             self.donut.box_y = int(self.donut.img_y + 0.15 * self.donut.img_height)
         for i in range(len(self.grid)):

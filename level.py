@@ -17,7 +17,8 @@ class Level():
         self.tile_scroll_pos = 0 #tile_scoll_pos and render_width_in_tiles are used to select a portion of the grid to iterate through when displaying
         self.render_width_in_tiles = 30
         self.check_point2_img = check_point2_img
-        self.last_check_point = 0
+        self.last_check_point = 0 #refers to the number of the last checkpoint activated, not the end of the level
+        self.win_block = None #grid object for the checkpoint the player must reach to complete the level
         
     def load_images(self):
         pass

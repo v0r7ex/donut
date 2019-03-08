@@ -2,7 +2,7 @@ from button import Button
 from tile import Tile
 
 class Level():
-    def __init__(self, donut, tile_size, usable_keys, width_in_tiles, background_img, check_point2_img):
+    def __init__(self, donut, tile_size, usable_keys, width_in_tiles, background_img, check_point2_img, win_block):
         self.donut = donut
         self.tile_size = tile_size
         self.usable_keys = usable_keys
@@ -18,7 +18,7 @@ class Level():
         self.render_width_in_tiles = 30
         self.check_point2_img = check_point2_img
         self.last_check_point = 0 #refers to the number of the last checkpoint activated, not the end of the level
-        self.win_block = None #grid object for the checkpoint the player must reach to complete the level
+        self.win_block = win_block #number of the checkpoint the player must reach to complete the level
         
     def load_images(self):
         pass
@@ -163,6 +163,8 @@ class Level():
                 self.grid[i][k].display()
                 #rect(self.grid[i][k].x, self.grid[i][k].y, self.tile_size, self.tile_size)
         self.donut.display()
+        level_completed = True if self.last_check_point == self.win_block else False
+        return level_completed
         
     def click(self):
         pass

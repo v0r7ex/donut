@@ -1,6 +1,5 @@
 add_library("minim")
 from program import Program
-from program import Program
 
 def setup():
     fullScreen(1) #optimize for 1920 by 1080

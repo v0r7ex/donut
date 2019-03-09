@@ -55,11 +55,19 @@ class Level():
         return False if return_tile is False else None
     
     def donut_x_shift(self):
-        if self.donut.x_velocity < 0: 
-            if self.donut.img_x + self.donut.x_velocity > -0.1 * self.donut.img_width: #prevents donut from moving off the left side of the screen
+        if self.grid[len(self.grid) - 9][0].on_screen():
+            if self.donut.x_velocity < 0: 
+                if self.donut.img_x + self.donut.x_velocity > -0.1 * self.donut.img_width:
                     self.donut.img_x += self.donut.x_velocity
                     self.donut.box_x += self.donut.x_velocity
-        elif self.donut.img_x < self.donut.max_x_pos or self.grid[len(self.grid) - 1][0].on_screen(): 
+            elif self.donut.img_x < 0.87 * width:
+                self.donut.img_x += self.donut.x_velocity
+                self.donut.box_x += self.donut.x_velocity
+        elif self.donut.x_velocity < 0: 
+            if self.donut.img_x + self.donut.x_velocity > -0.1 * self.donut.img_width: #prevents donut from moving all the way to the left side of the screen
+                    self.donut.img_x += self.donut.x_velocity
+                    self.donut.box_x += self.donut.x_velocity
+        elif self.donut.img_x < self.donut.max_x_pos: 
             self.donut.img_x += self.donut.x_velocity
             self.donut.box_x += self.donut.x_velocity
         else:

@@ -38,7 +38,7 @@ class Game():
     def build_level0(self, usable_keys):
         self.level0_bkgd_img = loadImage("level/sky.png")
         self.level0_bkgd_img.resize(width, height)
-        self.level0 = Level(self.donut, self.tile_size, usable_keys, 400, self.level0_bkgd_img, self.check_point2_img, 4)
+        self.level0 = Level(self.donut, self.tile_size, usable_keys, 240, self.level0_bkgd_img, self.check_point2_img, 4)
         self.level0.build_platform(0, 12, 11, self.dirt_tile_img, False)
         self.level0.build_platform(0, 11, 11, self.grass_tile_img)
         self.level0.build_platform(1, 10, 0, self.flower1_img, False)
@@ -188,8 +188,7 @@ class Game():
         self.level0.build_platform(214, 12, 25, self.dirt_tile_img, False)
         self.level0.build_platform(219, 10, 2, self.stone_tile_img, True, True)
         self.level0.build_platform(220, 9, 0, self.stone_tile_img, True, True)
-        self.level0.build_platform(220, 8, 0, self.check_point1_img, False, False, True, 4)
-        
+        self.level0.build_platform(220, 8, 0, self.check_point1_img, False, False, True, 4)        
         
     def reset(self):
         self.current_level = None
@@ -222,7 +221,7 @@ class Game():
         
 
     def display(self):
-        self.current_level_completed = self.current_level.display()
+        level_complete = self.current_level_completed = self.current_level.display()
         
     def click(self):
         self.current_level.click()

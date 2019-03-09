@@ -40,6 +40,7 @@ class Donut():
         self.land_sequence_right = [loadImage("donut/stand/stand_right1.png")] 
         self.land_sequence_left = [loadImage("donut/stand/stand_left1.png")] 
         self.die_sequence = [loadImage("donut/stand/stand_right1.png")]
+        self.win_sequence = [loadImage("donut/stand/stand_right1.png")]
         
     def resize_images(self):
         for img in self.stand_cycle_right:
@@ -59,6 +60,8 @@ class Donut():
         for img in self.jump_sequence_left:
             img.resize(self.img_width, self.img_height)
         for img in self.land_sequence_left:
+            img.resize(self.img_width, self.img_height)
+        for img in self.win_sequence:
             img.resize(self.img_width, self.img_height)
 
             
@@ -92,6 +95,8 @@ class Donut():
             frame_sequence = self.lamp_sequence_right if self.direction == "right" else self.lamp_sequence_left
         elif self.state == "die":
             frame_sequence = self.die_sequence
+        elif self.state == "win":
+            frame_sequence = self.win_sequence
         if self.current_frame < len(frame_sequence) - 1:
             self.current_frame += 1
         return frame_sequence[self.current_frame]
@@ -115,5 +120,10 @@ class Donut():
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.img_x, self.img_y)
         #rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
+        
+    def display_without_running(self):
+        imageMode(CORNER)
+        img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
+        image(img, self.img_x, self.img_y)
         
         

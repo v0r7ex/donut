@@ -19,6 +19,7 @@ class Level():
         self.check_point2_img = check_point2_img
         self.last_check_point = 0 #refers to the number of the last checkpoint activated, not the end of the level
         self.win_block = win_block #number of the checkpoint the player must reach to complete the level
+        self.level_completed = False
         
     def load_images(self):
         pass
@@ -153,26 +154,45 @@ class Level():
         self.test_check_point()
     
     def display(self):
-        if self.donut.box_y + self.donut.box_height/2 > height:
-            self.donut.img_y += self.donut.img_height
-            self.donut.box_y += self.donut.img_height
-            self.die()
-        elif self.donut.dead is True:
-            self.respawn()
+        print self.donut.coma_frames
+        if self.level_completed is False:
+            if self.donut.box_y + self.donut.box_height/2 > height:
+                self.donut.img_y += self.donut.img_height
+                self.donut.box_y += self.donut.img_height
+                self.die()
+            elif self.donut.dead is True:
+                self.respawn()
+            else:
+                while self.grid[self.tile_scroll_pos][0].on_screen() is False:
+                    self.tile_scroll_pos += 1
+                self.run_donut()
+            imageMode(CORNER)
+            image(self.bkgd_img, 0,-2)
+            grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1
+            for i in range(self.tile_scroll_pos, grid_render_end):
+                for k in range(len(self.grid[i])):
+                    self.grid[i][k].display()
+                    #rect(self.grid[i][k].x, self.grid[i][k].y, self.tile_size, self.tile_size)
+            self.donut.display()
+            if self.last_check_point == self.win_block:
+                self.level_completed = True
+                self.donut.x_velocity = 0
+                self.donut.y_velocity = self.donut.jump_y_velocity * 2
+                self.donut.state = "win"
+                self.donut.coma_frames = 0
         else:
-            while self.grid[self.tile_scroll_pos][0].on_screen() is False:
-                self.tile_scroll_pos += 1
-            self.run_donut()
-        imageMode(CORNER)
-        image(self.bkgd_img, 0,-2)
-        grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1
-        for i in range(self.tile_scroll_pos, grid_render_end):
-            for k in range(len(self.grid[i])):
-                self.grid[i][k].display()
-                #rect(self.grid[i][k].x, self.grid[i][k].y, self.tile_size, self.tile_size)
-        self.donut.display()
-        level_completed = True if self.last_check_point == self.win_block else False
-        return level_completed
+            if self.donut.coma_frames < 20:
+                self.donut.coma_frames += 1
+                self.donut.display_without_running()
+                imageMode(CORNER)
+                image(self.bkgd_img, 0,-2)
+                grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1
+                for i in range(self.tile_scroll_pos, grid_render_end):
+                    for k in range(len(self.grid[i])):
+                        self.grid[i][k].display()
+            else:
+                return True
+        return False
         
     def click(self):
         pass

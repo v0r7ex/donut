@@ -183,13 +183,13 @@ class Level():
         else:
             if self.donut.coma_frames < 20:
                 self.donut.coma_frames += 1
-                self.donut.display_without_running()
                 imageMode(CORNER)
                 image(self.bkgd_img, 0,-2)
                 grid_render_end = self.tile_scroll_pos + self.render_width_in_tiles if self.tile_scroll_pos + self.render_width_in_tiles < len(self.grid) else len(self.grid) - 1
                 for i in range(self.tile_scroll_pos, grid_render_end):
                     for k in range(len(self.grid[i])):
                         self.grid[i][k].display()
+                self.donut.display_without_running()
             else:
                 return True
         return False

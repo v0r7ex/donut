@@ -211,7 +211,6 @@ class Game():
         self.current_level.donut.coma_frames = 0
         
     def reset_current_level(self):
-        print "reset"
         self.reset_donut()
         self.current_level.tile_scroll_pos = 0
         self.current_level.last_check_point = 0
@@ -223,7 +222,7 @@ class Game():
                 if self.current_level.grid[0][0].on_screen() is False:
                     for i in range(len(self.current_level.grid)):
                         for k in range(len(self.current_level.grid[i])):
-                            self.current_level.grid[i][k].x += self.current_level.tile_size * 10
+                            self.current_level.grid[i][k].x += self.current_level.tile_size
                 
 
     def display(self):

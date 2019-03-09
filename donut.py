@@ -13,7 +13,7 @@ class Donut():
         self.max_x_velocity = self.tile_size/4 #use -1 * max_x_velocity to move left
         self.max_x_pos = width/7
         self.y_velocity = 0
-        self.jump_y_velocity = -1 * self.tile_size/1.7
+        self.jump_y_velocity = -1 * self.tile_size/1.7 - 3 # - 3 is a temporay fix to adjust for certain display sizes
         self.gravitational_accel = 3 * floor(self.tile_size/40) 
         self.terminal_velocity = self.gravitational_accel * 5
         self.load_images()
@@ -120,10 +120,5 @@ class Donut():
         img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
         image(img, self.img_x, self.img_y)
         #rect(self.box_x, self.box_y, self.box_width, self.box_height) #shows hit box
-        
-    def display_without_running(self):
-        imageMode(CORNER)
-        img = self.iterate_cycle() if self.state == "stand" or self.state == "walk" else self.iterate_sequence()
-        image(img, self.img_x, self.img_y)
         
         

@@ -154,7 +154,6 @@ class Level():
         self.test_check_point()
     
     def display(self):
-        print self.donut.coma_frames
         if self.level_completed is False:
             if self.donut.box_y + self.donut.box_height/2 > height:
                 self.donut.img_y += self.donut.img_height
@@ -177,11 +176,11 @@ class Level():
             if self.last_check_point == self.win_block:
                 self.level_completed = True
                 self.donut.x_velocity = 0
-                self.donut.y_velocity = self.donut.jump_y_velocity * 2
-                self.donut.state = "win"
+                self.donut.y_velocity = self.donut.jump_y_velocity * 1.3
+                self.donut.state = "jump"
                 self.donut.coma_frames = 0
         else:
-            if self.donut.coma_frames < 20:
+            if self.donut.coma_frames < 45:
                 self.donut.coma_frames += 1
                 imageMode(CORNER)
                 image(self.bkgd_img, 0,-2)
@@ -189,7 +188,8 @@ class Level():
                 for i in range(self.tile_scroll_pos, grid_render_end):
                     for k in range(len(self.grid[i])):
                         self.grid[i][k].display()
-                self.donut.display_without_running()
+                self.run_donut()
+                self.donut.display()
             else:
                 return True
         return False

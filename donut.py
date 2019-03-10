@@ -13,7 +13,7 @@ class Donut():
         self.max_x_velocity = self.tile_size/4 #use -1 * max_x_velocity to move left
         self.max_x_pos = width/7
         self.y_velocity = 0
-        self.jump_y_velocity = -1 * self.tile_size/1.7 - 3 # - 3 is a temporay fix to adjust for certain display sizes
+        self.jump_y_velocity = -1 * self.tile_size/1.7 # add " - 11" or so as temporay fix to adjust the gravity for certain display sizes
         self.gravitational_accel = 3 * floor(self.tile_size/40) 
         self.terminal_velocity = self.gravitational_accel * 5
         self.load_images()
